@@ -36,7 +36,7 @@ pip install -r requirements.txt
 
 Start up the server:
 ```
-export FLASK_APP=app.py
+export FLASK_APP=todo-list-app/app.py
 
 python -m flask run
 ```
