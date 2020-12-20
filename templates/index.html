@@ -3,25 +3,29 @@
 {% block head %} <title>To-Do List App</title> {% endblock %} 
 
 {% block body %}
-<h1>To-do app</h1>
-<form action="/add" method="POST">
-    <div>
-        <label for="title">To-do Title</label>
-        <input type="text" name="title" placeholder="Enter task...">
-        <button type="submit">Add</button>
+    <div style="margin-top: 50px;" class="ui text container">
+        <h1 class="ui center aligned header">To-do app</h1>
+        <div class="ui hidden divider"></div>
+        <form class="ui form" action="/add" method="POST">
+            <div class="ui segment horizontal segments">
+                <input type="text" name="title" placeholder="Enter task...">
+                <button type="submit" class="ui orange button">Add</button>
+            </div>
+        </form>
+        <div class="ui hidden divider"></div>
+        {% for todo in todo_list %}
+        <div class="ui orange segment text container">
+            <p class="ui big header">{{ todo.id }} | {{ todo.title }}</p>
+
+            {% if todo.complete == False %}
+                <span class="ui gray label">Incomplete</span>
+            {% else %}
+                <span class="ui green label">Completed</span>
+            {% endif %}
+
+            <a class="ui blue button" href="/update/{{ todo.id }}">Update</a>
+            <a class="ui red button" href="/delete/{{ todo.id }}">Delete</a>
+        </div>
     </div>
-</form>
-{% for todo in todo_list %}
-    <p>{{ todo.id }} | {{ todo.title }}</p>
-
-    {% if todo.complete == False %}
-        <span>Incomplete</span>
-    {% else %}
-        <span>Completed</span>
-    {% endif %}
-
-    <a href="/update/{{ todo.id }}">Update</a>
-    <a href="/delete/{{ todo.id }}">Delete</a>
-
-{% endfor %}
+    {% endfor %}
 {% endblock %}
