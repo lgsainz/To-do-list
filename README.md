@@ -1,11 +1,8 @@
 # Flask To-Do List App
 
-## About The Project
 This is a simple To-do list app using Flask, SQLAlchemy, PostgreSQL, and semantic UI.
 
-Python3.
-
-## Getting Started
+Use Python3.
 
 ## Setup
 
